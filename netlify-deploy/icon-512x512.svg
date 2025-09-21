@@ -1,0 +1,13 @@
+<svg width='512' height='512' xmlns='http://www.w3.org/2000/svg'>
+  <defs>
+    <radialGradient id='bg' cx='50%' cy='50%'>
+      <stop offset='0%' stop-color='#3b82f6'/>
+      <stop offset='100%' stop-color='#1e40af'/>
+    </radialGradient>
+  </defs>
+  <rect width='512' height='512' fill='url(#bg)' rx='64'/>
+  <circle cx='256' cy='300' r='75' fill='white' opacity='0.9'/>
+  <path d='M 256 200 Q 256 150, 306 150 Q 356 150, 356 200 Q 356 250, 256 300 Q 156 250, 156 200 Q 156 150, 206 150 Q 256 150, 256 200' fill='white' opacity='0.8'/>
+  <text x='256' y='120' text-anchor='middle' fill='white' font-family='Arial' font-size='48' font-weight='bold'>H2O</text>
+  <text x='256' y='450' text-anchor='middle' fill='white' font-family='Arial' font-size='28'>GESTION</text>
+</svg>

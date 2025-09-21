@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Générateur d'icônes H2eaux</title>
+    <style>
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .container { text-align: center; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Génération d'icônes H2eaux Gestion</h2>
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <canvas id="icon512" width="512" height="512"></canvas>
+        <canvas id="iconApple" width="180" height="180"></canvas>
+        <br>
+        <button onclick="generateIcons()">Générer les icônes</button>
+        <button onclick="downloadIcons()">Télécharger</button>
+    </div>
+
+    <script>
+        function generateIcons() {
+            generateIcon('icon192', 192);
+            generateIcon('icon512', 512);
+            generateIcon('iconApple', 180);
+        }
+
+        function generateIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Gradient background
+            const gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+            gradient.addColorStop(0, '#3b82f6');
+            gradient.addColorStop(1, '#1e40af');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Water drop shape
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.arc(size/2, size*0.6, size*0.15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Water wave
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = size * 0.02;
+            ctx.beginPath();
+            ctx.arc(size/2, size*0.4, size*0.25, 0, Math.PI, false);
+            ctx.stroke();
+            
+            // Text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${size*0.08}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.fillText('H2O', size/2, size*0.25);
+        }
+
+        function downloadIcons() {
+            downloadCanvas('icon192', 'icon-192x192.png');
+            downloadCanvas('icon512', 'icon-512x512.png');
+            downloadCanvas('iconApple', 'apple-touch-icon.png');
+        }
+
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Auto-generate on load
+        window.onload = generateIcons;
+    </script>
+</body>
+</html>
